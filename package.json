@@ -2,7 +2,7 @@
   "name": "scindo_nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "TestPlayground/testings.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "express-basic-auth": "^1.2.1"
+    "express-basic-auth": "^1.2.1",
+    "nodemon": "^2.0.15"
   }
 }

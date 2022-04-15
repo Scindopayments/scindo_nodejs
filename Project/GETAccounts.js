@@ -1,11 +1,11 @@
-import { username, password } from './Credentials.js'
+import { username, password } from './CredentialsLive.js'
 import axios from 'axios';
 
 let usernameBasic = username;
 let passwordBasic = password;
 
-function getUsers() {
-        return axios.get('https://api.yapily.com/users', {
+function getAccounts() {
+        return axios.get('https://api.yapily.com/accounts', {
             auth: {
                 username : usernameBasic,
                 password : passwordBasic
@@ -20,13 +20,11 @@ function getUsers() {
 
 }
 
-const data = await getUsers();
+const data = await getAccounts();
 
 //OK CALL
 if(data.retcode) {
     console.log(data); //GET the entire response
-    console.log(data[0]); //GET the first object
-    console.log(data[0].uuid); //GET the uuid of the first object
 }
 
 //ERROR CALL

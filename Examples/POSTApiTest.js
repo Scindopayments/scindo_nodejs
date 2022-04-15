@@ -1,4 +1,4 @@
-import { username, password } from './credentials.js'
+import { username, password } from './Credentials.js'
 import axios from 'axios';
 
 let usernameBasic = username;
@@ -6,11 +6,16 @@ let passwordBasic = password;
 
 let userID = 'APPLICATION_USER_ID17'
 
+let body = JSON.stringify({ applicationUserId: userID });
+
 function createUser() {
-    return axios.post('https://api.yapily.com/users', {applicationUserId: userID}, {
+    return axios.post('https://api.yapily.com/users', body, {
         auth: {
             username : usernameBasic,
             password : passwordBasic
+        },
+        headers: {
+            'Content-Type': 'application/json'
         }
     })
         .then(rs => {
@@ -34,4 +39,3 @@ if(data.code){
     console.log(data.code);
     console.log(data.message);
 }
-

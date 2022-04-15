@@ -1,4 +1,4 @@
-import { username, password } from '../Examples/credentials.js'
+import { username, password } from '../Examples/Credentials.js'
 import axios from 'axios';
 
 let usernameBasic = username;

@@ -21,11 +21,6 @@ let amount_amount = 9.00;
 let amount_currency = "EUR";
 //paymentRequestPayee
 let payee_name = 'BILLS COFFEE LTD';
-//accountIdentifications
-let accountIdentifications_type_account = 'ACCOUNT_NUMBER';
-let identification_account = '1'; //account number identificaiton
-let accountIdentifications_type_sort = 'SORT_CODE';
-let identification_sort = '1'; //sortcode identificaiton
 //address
 let country = 'IT';
 
@@ -41,15 +36,21 @@ let body = JSON.stringify({
             amount : amount_amount,
             currency :amount_currency
         },
+        payer : {
+            name : 'gigi',
+            accountIdentifications :  [
+                {
+                    type: "IBAN",
+                    identification: "DE12345678901234567890"
+                }
+            ]
+        },
         payee : {
             name : payee_name,
-            accountIdentifications : [{
-                    type : accountIdentifications_type_account,
-                    identification : identification_account
-                },
+            accountIdentifications : [
                 {
-                    type : accountIdentifications_type_sort,
-                    identification : identification_sort
+                    type: "IBAN",
+                    identification: "BE12345678901234"
                 }
             ],
             address : {

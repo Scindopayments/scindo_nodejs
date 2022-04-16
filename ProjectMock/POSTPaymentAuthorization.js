@@ -9,14 +9,14 @@ let passwordBasic = password;
 //Body creator in Json
 function jsonBodyParser() {
 
-    const applicationUserId = 'single-payment-tutorial';
-    const callback = 'https://scindopayments/callback1'
-    let institutionId = 'bpm-sandbox';
+    const applicationUserId = 'scindopay';
+    const callback = 'https://display-parameters/'
+    let institutionId = 'fineco-sandbox';
 
     //paymentRequest
     let paymentRequest_type = 'DOMESTIC_PAYMENT';
     let paymentRequest_reference = 'Bills Coffee Shop';
-    let paymentRequest_paymentIdempotencyId = '1' //ID;
+    let paymentRequest_paymentIdempotencyId = '2' //ID;
     //Amount
     let amount_amount = 9.00;
     let amount_currency = "EUR";
@@ -25,7 +25,7 @@ function jsonBodyParser() {
     //address
     let country = 'IT';
 
-    let body = JSON.stringify({
+    return JSON.stringify({
         applicationUserId: applicationUserId,
         institutionId: institutionId,
         callback: callback,
@@ -60,8 +60,6 @@ function jsonBodyParser() {
             }
         }
     });
-
-    return body;
 }
 
 function postPaymentAuthorization(jsonBody) {
@@ -85,6 +83,7 @@ function postPaymentAuthorization(jsonBody) {
 
 
 let jsonBody = jsonBodyParser();
+console.log(jsonBody)
 let data = await postPaymentAuthorization(jsonBody);
 
 //OK CALL

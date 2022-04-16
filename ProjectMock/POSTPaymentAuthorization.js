@@ -1,10 +1,48 @@
-import { username, password } from './CredentialsLive.js'
+import {username, password, url} from './CredentialsLive.js'
 import axios from 'axios';
 
 let usernameBasic = username;
 let passwordBasic = password;
 
+let endpoint = '/payment-auth-requests';
+let URI = url+endpoint;
 
+
+function postPaymentAuthorization(jsonBody) {
+    return axios.post(URI, jsonBody, {
+        auth: {
+            username : usernameBasic,
+            password : passwordBasic,
+        },
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(rs => {
+            const data = rs.data;
+            data.retcode = rs.status;
+            return  data;
+
+        })
+        .catch(err => err?.response?.data?.error || err)
+}
+
+
+let jsonBody = jsonBodyParser();
+let data = await postPaymentAuthorization(jsonBody);
+
+//OK CALL
+if(data.retcode) {
+    console.log(data);
+    console.log(data.retcode);
+}
+
+//ERROR CALL
+if(data.code){
+    console.log(data);
+    console.log(data.code);
+    console.log(data.message);
+}
 
 //Body creator in Json
 function jsonBodyParser() {
@@ -60,41 +98,4 @@ function jsonBodyParser() {
             }
         }
     });
-}
-
-function postPaymentAuthorization(jsonBody) {
-    return axios.post('https://api.yapily.com/payment-auth-requests', jsonBody, {
-        auth: {
-            username : usernameBasic,
-            password : passwordBasic,
-        },
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(rs => {
-            const data = rs.data;
-            data.retcode = rs.status;
-            return  data;
-
-        })
-        .catch(err => err?.response?.data?.error || err)
-}
-
-
-let jsonBody = jsonBodyParser();
-console.log(jsonBody)
-let data = await postPaymentAuthorization(jsonBody);
-
-//OK CALL
-if(data.retcode) {
-    console.log(data);
-    console.log(data.retcode);
-}
-
-//ERROR CALL
-if(data.code){
-    console.log(data);
-    console.log(data.code);
-    console.log(data.message);
 }

@@ -1,11 +1,14 @@
-import { username, password } from './CredentialsLive.js'
+import {username, password, url} from './CredentialsLive.js'
 import axios from 'axios';
 
 let usernameBasic = username;
 let passwordBasic = password;
 
+let endpoint = '/institutions';
+let URI = url+endpoint;
+
 function getInstitutions() {
-        return axios.get('https://api.yapily.com/institutions', {
+        return axios.get(URI, {
             auth: {
                 username : usernameBasic,
                 password : passwordBasic

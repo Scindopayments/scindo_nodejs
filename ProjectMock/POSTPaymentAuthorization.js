@@ -1,11 +1,11 @@
 import {username, password, url} from './CredentialsLive.js'
 import axios from 'axios';
 
-let usernameBasic = username;
-let passwordBasic = password;
+const usernameBasic = username;
+const passwordBasic = password;
 
-let endpoint = '/payment-auth-requests';
-let URI = url+endpoint;
+const endpoint = '/payment-auth-requests';
+const URI = url+endpoint;
 
 
 function postPaymentAuthorization(jsonBody) {

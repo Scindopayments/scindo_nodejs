@@ -1,11 +1,11 @@
 import {username, password, url} from './CredentialsLive.js'
 import axios from 'axios';
 
-let usernameBasic = username;
-let passwordBasic = password;
+const usernameBasic = username;
+const passwordBasic = password;
 
-let endpoint = '/institutions';
-let URI = url+endpoint;
+const endpoint = '/institutions';
+const URI = url+endpoint;
 
 function getInstitutions() {
         return axios.get(URI, {

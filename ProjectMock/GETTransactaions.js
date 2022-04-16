@@ -1,15 +1,15 @@
 import { username, password,url} from './CredentialsLive.js'
 import axios from 'axios';
 
-let usernameBasic = username;
-let passwordBasic = password;
+const usernameBasic = username;
+const passwordBasic = password;
 
-let endpoint = '/accounts';
-let endpoint2 = '/transactions';
-let bankAccount = '/bd1c1751-4528-4324-b57b-395508124b08'
-let URI = url+endpoint+bankAccount+endpoint2;
+const endpoint = '/accounts';
+const endpoint2 = '/transactions';
+const bankAccount = '/bd1c1751-4528-4324-b57b-395508124b08'
+const URI = url+endpoint+bankAccount+endpoint2;
 
-let consent = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZpbmVjby1zYW5kYm94IiwiQ09OU0VOVCI6IjNiMmVmZjAxLTVkNGMtNDc2ZC04M2NmLWRkNDU4MGYwODBjMSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJzY2luZG9wYXkiLCJVU0VSIjoiNTRmNzViMDYtZjAwYS00NmU3LTg3M2QtMWJiNWQ1MjhmM2QwIn0.0601ZchJu3S6H2cnVyVFawmT-QBUWNPsnXBCgZ0W__DFhN-YLWPegsP5yuYKhAAsptuIcsu5YOIiscKnA1NhMg';
+const consent = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZpbmVjby1zYW5kYm94IiwiQ09OU0VOVCI6IjNiMmVmZjAxLTVkNGMtNDc2ZC04M2NmLWRkNDU4MGYwODBjMSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJzY2luZG9wYXkiLCJVU0VSIjoiNTRmNzViMDYtZjAwYS00NmU3LTg3M2QtMWJiNWQ1MjhmM2QwIn0.0601ZchJu3S6H2cnVyVFawmT-QBUWNPsnXBCgZ0W__DFhN-YLWPegsP5yuYKhAAsptuIcsu5YOIiscKnA1NhMg';
 
 
 console.log(URI)

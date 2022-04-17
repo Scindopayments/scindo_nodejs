@@ -1,28 +1,24 @@
-import { username, password,url} from './CredentialsLive.js'
+import {username, password, url} from './CredentialsLive.js'
 import axios from 'axios';
 
 const usernameBasic = username;
 const passwordBasic = password;
 
-const endpoint = '/accounts';
-const endpoint2 = '/transactions';
-const bankAccount = '/bd1c1751-4528-4324-b57b-395508124b08'
-const URI = url+endpoint+bankAccount+endpoint2;
+const endpoint = '/payments';
+const endpoint2 = '/details';
+const paymentId = '/66475bf1-c016-418a-87ac-a8a8529defd2'
+const URI = url+endpoint+paymentId+endpoint2;
 
 const consent = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZpbmVjby1zYW5kYm94IiwiQ09OU0VOVCI6IjNiMmVmZjAxLTVkNGMtNDc2ZC04M2NmLWRkNDU4MGYwODBjMSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJzY2luZG9wYXkiLCJVU0VSIjoiNTRmNzViMDYtZjAwYS00NmU3LTg3M2QtMWJiNWQ1MjhmM2QwIn0.0601ZchJu3S6H2cnVyVFawmT-QBUWNPsnXBCgZ0W__DFhN-YLWPegsP5yuYKhAAsptuIcsu5YOIiscKnA1NhMg';
 
-
-console.log(URI)
-
-function getTransactions() {
+function getInstitutions() {
         return axios.get(URI, {
             auth: {
                 username : usernameBasic,
                 password : passwordBasic
             },
-            headers: {
-                'Content-Type': 'application/json',
-                'Consent': consent
+            headers:{
+                'Consent' : consent
             }
         })
             .then(rs => {
@@ -34,12 +30,11 @@ function getTransactions() {
 
 }
 
-const data = await getTransactions();
+const data = await getInstitutions();
 
 //OK CALL
 if(data.retcode) {
-    console.log(data.data); // Get all the first bank data
-    console.log(data.data[1].id); // Get id of the first bank
+    console.log(data.data); // Get all the first bank datan
 }
 
 //ERROR CALL

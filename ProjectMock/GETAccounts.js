@@ -17,6 +17,7 @@ function getAccounts() {
                 password : passwordBasic
             },
             headers: {
+                'Content-Type': 'application/json',
                 Consent : consent
             }
         })

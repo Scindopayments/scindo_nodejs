@@ -12,6 +12,9 @@ function getInstitutions() {
             auth: {
                 username : usernameBasic,
                 password : passwordBasic
+            },
+            headers :{
+                'Content-Type': 'application/json'
             }
         })
             .then(rs => {

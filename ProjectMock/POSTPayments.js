@@ -1,4 +1,4 @@
-import {username, password, url} from './CredentialsLive.js'
+import {username, password, url} from './CredentialsMock.js'
 import axios from 'axios';
 
 let usernameBasic = username;

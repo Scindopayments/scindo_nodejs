@@ -1,20 +1,18 @@
-import { username, password,url} from './CredentialsMock.js'
+import {username, password, url} from './CredentialsMock.js'
 import axios from 'axios';
 
 const usernameBasic = username;
 const passwordBasic = password;
 
-const endpoint = '/accounts';
+const endpoint = '/accounts/';
+const accountId = 'bfbdfa27-4cb3-464f-ab70-51261b87796b';
 const endpoint2 = '/transactions';
-const bankAccount = '/bd1c1751-4528-4324-b57b-395508124b08'
-const URI = url+endpoint+bankAccount+endpoint2;
+const URI = url+endpoint+accountId+endpoint2;
 
 const consent = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZpbmVjby1zYW5kYm94IiwiQ09OU0VOVCI6IjNiMmVmZjAxLTVkNGMtNDc2ZC04M2NmLWRkNDU4MGYwODBjMSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJzY2luZG9wYXkiLCJVU0VSIjoiNTRmNzViMDYtZjAwYS00NmU3LTg3M2QtMWJiNWQ1MjhmM2QwIn0.0601ZchJu3S6H2cnVyVFawmT-QBUWNPsnXBCgZ0W__DFhN-YLWPegsP5yuYKhAAsptuIcsu5YOIiscKnA1NhMg';
 
 
-console.log(URI)
-
-function getTransactions() {
+function getAccounts() {
         return axios.get(URI, {
             auth: {
                 username : usernameBasic,
@@ -22,7 +20,7 @@ function getTransactions() {
             },
             headers: {
                 'Content-Type': 'application/json',
-                'Consent': consent
+                Consent : consent
             }
         })
             .then(rs => {
@@ -34,12 +32,12 @@ function getTransactions() {
 
 }
 
-const data = await getTransactions();
+const data = await getAccounts();
 
 //OK CALL
 if(data.retcode) {
-    console.log(data.data); // Get all the first bank data
-    console.log(data.data[1].id); // Get id of the first bank
+    console.log(data); //GET the entire response
+    console.log(data.data[1].id)
 }
 
 //ERROR CALL

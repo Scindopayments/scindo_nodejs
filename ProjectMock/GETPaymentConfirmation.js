@@ -1,4 +1,4 @@
-import {username, password, url} from './CredentialsLive.js'
+import {username, password, url} from './CredentialsMock.js'
 import axios from 'axios';
 
 const usernameBasic = username;
@@ -11,13 +11,14 @@ const URI = url+endpoint+paymentId+endpoint2;
 
 const consent = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZpbmVjby1zYW5kYm94IiwiQ09OU0VOVCI6IjNiMmVmZjAxLTVkNGMtNDc2ZC04M2NmLWRkNDU4MGYwODBjMSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJzY2luZG9wYXkiLCJVU0VSIjoiNTRmNzViMDYtZjAwYS00NmU3LTg3M2QtMWJiNWQ1MjhmM2QwIn0.0601ZchJu3S6H2cnVyVFawmT-QBUWNPsnXBCgZ0W__DFhN-YLWPegsP5yuYKhAAsptuIcsu5YOIiscKnA1NhMg';
 
-function getInstitutions() {
+function getPaymentConfirmation() {
         return axios.get(URI, {
             auth: {
                 username : usernameBasic,
                 password : passwordBasic
             },
             headers:{
+                'Content-Type': 'application/json',
                 'Consent' : consent
             }
         })
@@ -30,7 +31,7 @@ function getInstitutions() {
 
 }
 
-const data = await getInstitutions();
+const data = await getPaymentConfirmation();
 
 //OK CALL
 if(data.retcode) {
